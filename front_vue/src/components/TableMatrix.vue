@@ -1,0 +1,45 @@
+<template>
+    <div>
+      <table class="table">
+        <tbody>
+          <div v-for="(row, rowIndex) in tableData" :key="rowIndex">
+              <td v-for="(cell, colIndex) in row" :key="colIndex">
+                <input type="text" v-model="tableData[rowIndex][colIndex]" />
+              </td>
+          </div>
+        </tbody>
+      </table>
+    </div>
+</template>
+  
+<script setup>
+import { ref, watch } from 'vue';
+
+const props = defineProps({
+  tableData: {
+    type: Array,
+    default: []
+  },
+});
+
+const tableData = ref(props.tableData);
+
+watch(props.tableData, () => {
+  tableData.value = props.tableData
+})
+</script>
+
+<style scoped>
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  
+  .table input[type="text"] {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+</style>
