@@ -29,8 +29,9 @@ const  showMatrix = computed(() => !(m.value.replace(" ", "").length && n.value.
     <VInput v-model="n" placeholder="Строк"/>
     <VBtn value="Алгоритм Лапласа" :disable="showMatrix" @click="fillTable(); stateShow = '/api/laplas'" />
     <VBtn value="Оптимальный алгоритм" :disable="showMatrix" @click="fillTable(); stateShow = '/api/optimal'" />
-    <VBtn value="Алгоритм Саваджа" :disable="showMatrix" @click="fillTable(); stateShow = '/api/savage'" />
+    <VBtn value="Алгоритм Сэвиджа" :disable="showMatrix" @click="fillTable(); stateShow = '/api/savage'" />
     <VBtn value="Критерий Гурвица" :disable="showMatrix" @click="fillTable(); stateShow = '/api/hurwitz'" />
+    <VBtn value="Сравнить алгоритмы" :disable="showMatrix" @click="fillTable(); stateShow = '/api/compare_algo'" />
   </div>
   <AlgoMatrix 
     v-if="stateShow && !showMatrix"

@@ -46,22 +46,14 @@ def solve_optimal(Win_Lose_Matrix):
     to_print.append(f"Оптимальная смешанная стратегия для игрока B: {' '.join(f'{val:.5f}' for val in mixed_strategy_B)}")
     to_print.append(f"Средний выигрыш: {price_B:.5f}")
 
-    print("\n".join(to_print))
+    mem_prog = int(tracemalloc.get_tracemalloc_memory() / 1024)
+    time_prog = round((time.time() - start_time) * 1_000_000, 4)
+
+    # print("\n".join(to_print))
     return [
-        f"Оптимальное решение игрока А: {mixed_strategy_A}",
-        f"Оптимальное решение игрока В: {mixed_strategy_B}",
-        f"Оптимальное решение: {price_B}",
-        f"Память: {int(tracemalloc.get_tracemalloc_memory() / 1024)} КБ ", 
-        f"Время: {round((time.time() - start_time) * 1_000_000, 4)} нс ", 
-    ]
-
-
-Win_Lose_Matrix = [
-    [4, 6, 8, 10],
-    [8, 12, 7, 9],
-    [12, 8, 6, 5],
-    [5, 13, 8, 6],
-    [6, 7, 11, 7],
-]
-
-solve_optimal(Win_Lose_Matrix)
+        f"Оптимальное решение игрока А: {', '.join(map(lambda x: str(round(x, 5)), mixed_strategy_A))}",
+        f"Оптимальное решение игрока В: {', '.join(map(lambda x: str(round(x, 5)), mixed_strategy_B))}",
+        f"Оптимальное решение: {price_B:.5f}",
+        f"Память: {mem_prog} КБ ", 
+        f"Время: {time_prog} нс "
+    ], {"time": time_prog, "mem": mem_prog, "win": price_B}

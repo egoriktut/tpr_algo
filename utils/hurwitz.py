@@ -12,12 +12,14 @@ def solve_hurwitz(game_matrix, optimistic_criteria):
         if k > max_k:
             opt_strategy = i
             max_k = k
-        print(k)
+
+    mem_prog = int(tracemalloc.get_tracemalloc_memory() / 1024)
+    time_prog = round((time.time() - start_time) * 1_000_000, 4)
     return [
         f"Оптимальное решение: {max_k}",
         f"Оптимальная стратегия: {opt_strategy + 1}",
-        f"Память: {int(tracemalloc.get_tracemalloc_memory() / 1024)} КБ ", 
-        f"Время: {round((time.time() - start_time) * 1_000_000, 4)} нс ", 
-    ]
+        f"Память: {mem_prog} КБ ", 
+        f"Время: {time_prog} нс "
+    ], {"time": time_prog, "mem": mem_prog, "win": max_k}
 
 
