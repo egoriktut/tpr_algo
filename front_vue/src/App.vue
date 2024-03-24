@@ -31,6 +31,7 @@ const  showMatrix = computed(() => !(m.value.replace(" ", "").length && n.value.
     <VBtn value="Оптимальный алгоритм" :disable="showMatrix" @click="fillTable(); stateShow = '/api/optimal'" />
     <VBtn value="Алгоритм Сэвиджа" :disable="showMatrix" @click="fillTable(); stateShow = '/api/savage'" />
     <VBtn value="Критерий Гурвица" :disable="showMatrix" @click="fillTable(); stateShow = '/api/hurwitz'" />
+    <VBtn value="Итеративный Алгоритм" :disable="showMatrix" @click="fillTable(); stateShow = '/api/iterative'" />
     <VBtn value="Сравнить алгоритмы" :disable="showMatrix" @click="fillTable(); stateShow = '/api/compare_algo'" />
   </div>
   <AlgoMatrix 

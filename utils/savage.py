@@ -30,7 +30,12 @@ def solve_savage(game_matrix):
         f"Время: {time_prog} нс "
     ], {"time": time_prog, "mem": mem_prog}
 
-
+def solve_savage_100times(game_matrix):
+    start_time = time.time()
+    for i in range(100):
+        solve_savage(game_matrix)
+    
+    return {"time": round((time.time() - start_time) * 1_000_000, 4)}
 
 
 game_matrix = [

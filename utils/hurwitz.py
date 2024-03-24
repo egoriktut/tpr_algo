@@ -22,4 +22,10 @@ def solve_hurwitz(game_matrix, optimistic_criteria):
         f"Время: {time_prog} нс "
     ], {"time": time_prog, "mem": mem_prog, "win": max_k}
 
+def solve_hurwitz_100times(game_matrix, optimistic_criteria):
+    start_time = time.time()
+    for i in range(100):
+        solve_hurwitz(game_matrix, optimistic_criteria)
+    
+    return {"time": round((time.time() - start_time) * 1_000_000, 4)}
 

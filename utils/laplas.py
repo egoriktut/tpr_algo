@@ -25,3 +25,10 @@ def solve_laplas(game_matrix):
         f"Время: {time_prog} нс "
     ], {"time": time_prog, "mem": mem_prog}
 
+
+def solve_laplas_100times(game_matrix):
+    start_time = time.time()
+    for i in range(100):
+        solve_laplas(game_matrix)
+    
+    return {"time": round((time.time() - start_time) * 1_000_000, 4)}
