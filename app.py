@@ -126,11 +126,11 @@ def api_compare_algo():
     return {"msg": result, "stats": stats}
     
 
-FlaskUI(app=app, server="flask", width=700, height=700).run()
+# FlaskUI(app=app, server="flask", width=700, height=700).run()
 
 
-# if __name__ == "__main__":
-#     app.run()
+if __name__ == "__main__":
+    app.run()
 # [
     # [4,6,8,10],
     # [8,12,7,9],

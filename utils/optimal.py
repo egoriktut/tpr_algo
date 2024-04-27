@@ -25,16 +25,16 @@ def solve_optimal(Win_Lose_Matrix):
 
         return mixed_strategy_A, mixed_strategy_B, price_A, price_B
 
-    c = [-1, -1, -1, -1]  # Функция цели
     A_ub = copy.deepcopy(Win_Lose_Matrix)
-    b_ub = [1, 1, 1, 1, 1]  # '1'
+    c = [-1] * len(A_ub[0])  # Функция цели
+    b_ub = [1] * len(A_ub)  # '1'
     straight_sol = optimize.linprog(c=c, A_ub=A_ub, b_ub=b_ub, method='highs')
     make_ans_optimal(straight_sol)
 
     to_print.append("")
 
-    c = [1, 1, 1, 1, 1]  # Функция цели
-    b_ub = [-1, -1, -1, -1]
+    c = [1] * len(A_ub)  # Функция цели
+    b_ub = [-1] * len(A_ub[0])
     left_side = np.array(A_ub).T * -1
     reverse_sol = optimize.linprog(c=c, A_ub=left_side, b_ub=b_ub, method='highs')
     make_ans_optimal(reverse_sol)
